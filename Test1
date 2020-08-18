@@ -1,1 +1,42 @@
-//spec
+// spec.js
+describe('Register page test', function() {
+    var firstName = element(by.model('?'));
+    var secondName = element(by.model('?'));
+    var cCode = element(by.model('?'));    // how to in drop down menu?
+    var phone = element(by.model('?'));
+    var eMial = element(by.model('?'));
+    var password = element(by.model('?'));
+    var cPassword = element(by.model('?'));
+    var city = element(by.model('?'));
+    var town = element(by.model('?'));
+    var registerButton = element(by.id('?'));
+    
+    beforeEach(function() {
+      browser.get('https://tarlam.web.app/register');
+    });
+  
+   /* it('should have a title', function() {
+      expect(browser.getTitle()).toEqual('Register page');
+    });   Should I keep it? As I see no title */
+  
+    it('should add user data', function() {
+      firstName.sendKeys('test');
+      secondName.sendKeys(' user');
+      cCode.sendkeys('+90');
+      phone.sendkeys('1234567890');  // does sendkey works with drop down? maybe (by.cssSelector("selecttype")).sendkeys
+      eMial.sendkeys('abc@gmail.com');
+      password.sendkeys('password');
+      cPassword.sendKeys('password');
+      city.sendkeys('');         // issue check chrome
+      town.sendkeys('');         // issue
+      registerButton.click();
+     // expect(browser.getUrl()).toEqual('link to the webpage after registeration ');
+    });
+  
+    // can we add browser check in same it? in the context of refresh page
+     it('should show new webpage', function() {
+
+        expect(browser.getUrl()).toEqual('link to the webpage after registeration');
+    
+    });
+  });
